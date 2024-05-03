@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Camper-Rental/static/css/main.0ad2652d.css",
+    "main.js": "/Camper-Rental/static/js/main.457ef17f.js",
+    "index.html": "/Camper-Rental/index.html",
+    "main.0ad2652d.css.map": "/Camper-Rental/static/css/main.0ad2652d.css.map",
+    "main.457ef17f.js.map": "/Camper-Rental/static/js/main.457ef17f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0ad2652d.css",
+    "static/js/main.457ef17f.js"
+  ]
+}
