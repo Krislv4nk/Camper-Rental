@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Camper-Rental/static/css/main.ca80b3e1.css",
-    "main.js": "/Camper-Rental/static/js/main.8ef6ee56.js",
+    "main.js": "/Camper-Rental/static/js/main.aa88f04c.js",
     "static/media/lake.jpg": "/Camper-Rental/static/media/lake.f53bd130017e0c1c9c48.jpg",
     "index.html": "/Camper-Rental/index.html",
     "main.ca80b3e1.css.map": "/Camper-Rental/static/css/main.ca80b3e1.css.map",
-    "main.8ef6ee56.js.map": "/Camper-Rental/static/js/main.8ef6ee56.js.map"
+    "main.aa88f04c.js.map": "/Camper-Rental/static/js/main.aa88f04c.js.map"
   },
   "entrypoints": [
     "static/css/main.ca80b3e1.css",
-    "static/js/main.8ef6ee56.js"
+    "static/js/main.aa88f04c.js"
   ]
 }
