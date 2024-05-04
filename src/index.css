@@ -5,6 +5,7 @@
   --primary-color-text: #475467;
     --primary-color-red: #E44848;
       --primary-color-yellow: #FFC531;
+      --secondary-color-red: #d84343;
 }
 html {
   box-sizing: border-box;
@@ -23,6 +24,10 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  color: var(--primary-color-text);
+  background-color: var(--primary-color-input);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,

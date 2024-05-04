@@ -1,11 +1,15 @@
 import React from "react";
+import { Loader } from "components/Loader/Loader";
+import { errorToast } from "helpers/services";
 
 
 const Catalog = () => {
 
     return (
         <div>
-            <h1>Catalog</h1>
+            {isLoading && <Loader />}
+            {error && errorToast(error)}
+            {camperSlice.lengs> 0 && <CatalogList/>}
         </div>
     )
 }

@@ -1,0 +1,57 @@
+
+.wrapper {
+    padding: 100px 64px;
+    max-width: 1440px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+width: 1312px;
+height: 600px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+display: flex;
+    justify-content: space-between;
+}
+.heroTitle {
+    font-size: 48px;
+    line-height: 26px;
+    margin-top: 50px;
+    margin-left: 700px;
+  color: var(--primary-color-black);
+  font-weight: 600;
+}
+
+.heroWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+}
+@keyframes blink {
+        0% {
+            color: var(--primary-color-black);
+        }
+        100% {
+            color: var(--secondary-color-red);
+        }
+    }
+.link{
+    text-decoration: none;
+    color: var(--primary-color-black);
+    font-size: 40px;
+    font-weight: 700;
+   padding: 10px;
+   border-radius: 10px;
+   background-color: rgba(240, 248, 255, 0.174);
+    margin-left: 800px;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: 0.5s;
+    animation: blink 1.5s infinite alternate;
+}

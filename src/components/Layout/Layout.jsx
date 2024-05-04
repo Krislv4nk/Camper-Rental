@@ -10,26 +10,31 @@ export const Layout = ({ children }) => {
         <div>
             <header className={css.header}>
                 <nav>
+                    <div className={css.wrapper}>
                     <ul className={css.headerList}>
                         <li ><NavLink className={({ isActive }) =>
             `${css.headerItem} ${isActive ? css.active : ''}`
-          } to="/" end>Home</NavLink></li>
+          } to="/" end>Home</NavLink></li><div className={css.catalogWrapper}>
                         <li ><NavLink className={({ isActive }) =>
             `${css.headerItem} ${isActive ? css.active : ''}`
           } to="/catalog">Catalog</NavLink></li>
 
                        <li ><NavLink className={({ isActive }) =>
             `${css.headerItem} ${isActive ? css.active : ''}`
-          } to="/favorites">Favorites</NavLink></li> 
+          } to="/favorites">Favorites</NavLink></li></div>
           
           <Outlet />
-        
-                    </ul>
+                        </ul>
+                        </div>
                 </nav>
             </header>
             <main>
                 {children}
             </main>
-            
+            <footer className={css.footer}><div className={css.wrapper}>
+                <p className={css.footerText}>© 2024</p>
+                <p className={css.footerText}>All rights reserved</p>
+</div>
+            </footer>
         </div>)
 }
