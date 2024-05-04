@@ -3,15 +3,6 @@ import { createSelector } from '@reduxjs/toolkit';
 
 export const selectCampers = state => state.campers.campers;
 
-export const selectCampersIsLoading = createSelector(
-    selectCampers,
-    contacts => contacts.isLoading
-);
-export const selectCampersIsError = createSelector(
-    selectCampers,
-    contacts => contacts.error
-);
-
 export const selectCampersFavorites = createSelector(
     selectCampers,
     contacts => contacts.items

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { campersReducer } from "./campersSlice";
+import { camperReducer } from "./camperSlice.js";
 
 import storage from 'redux-persist/lib/storage';
 import {
@@ -20,7 +20,7 @@ const campersConfig = {
 
  export const store = configureStore({
   reducer: {
-   campers: persistReducer( campersConfig,campersReducer),
+   campers: persistReducer( campersConfig,camperReducer),
   },
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({

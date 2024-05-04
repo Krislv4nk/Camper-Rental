@@ -1,35 +1,55 @@
-import { createSlise } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { getCampersThunk } from "./camperSlice.operations";
 
 
 const initialState = {
-    campers: [],
-    favorites: [],
-    filter: '',
+    _id: null,
+    name: '',
+    price: 0,
+    rating: 0,
+    location: '',
+    adults: 0,
+    children: 0,
+    engine: '',
+    transmission: '',
+    form: '',
+    length: 0,
+    width: 0,
+    height: 0,
+    tank: 0,
+    consumption: 0,
+    description: '',
+    details: {},
+    gallery: [],
+    reviews: [],
     error: null,
     isLoading: false,
+    favorites: false,
 };
 
-export const camperSlice = createSlise({
-    name: 'camper',
+
+export const camperSlice = createSlice({
+    name: 'campers',
     initialState,
-    reducers: {
-        getCampers: (state, action) => {
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+        .addCase(getCampersThunk.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.error = null;
             state.campers = action.payload;
-        },
-        getFavorites: (state, action) => {
-            state.favorites = action.payload;
-        },
-        setFilter: (state, action) => {
-            state.filter = action.payload;
-        },
-        setError: (state, action) => {
+        })
+        .addCase(getCampersThunk.pending, (state, action) => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(getCampersThunk.rejected, (state, action) => {
+            state.isLoading = false;
             state.error = action.payload;
-        },
-        setIsLoading: (state, action) => {
-            state.isLoading = action.payload;
-        },
-    },
+        })
+    }
+    
 })
 
-export const { getCampers, getFavorites, setFilter, setError, setIsLoading } = camperSlice.actions;
+
 export const camperReducer = camperSlice.reducer
