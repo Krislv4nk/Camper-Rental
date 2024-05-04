@@ -1,55 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCampersThunk } from "./camperSlice.operations";
+import { getCampersThunk } from "./operations";
 
 
 const initialState = {
-    _id: null,
-    name: '',
-    price: 0,
-    rating: 0,
-    location: '',
-    adults: 0,
-    children: 0,
-    engine: '',
-    transmission: '',
-    form: '',
-    length: 0,
-    width: 0,
-    height: 0,
-    tank: 0,
-    consumption: 0,
-    description: '',
-    details: {},
-    gallery: [],
-    reviews: [],
-    error: null,
-    isLoading: false,
-    favorites: false,
+    cars: [],
+    favorites: [],
+    page: 1,
 };
 
 
 export const camperSlice = createSlice({
     name: 'campers',
     initialState,
-    reducers: {},
+    reducers: {
+        addCamper(state, action) {
+            state.favorites.push(action.payload);
+        },
+        removeCamper(state, action) {
+            state.favorites = state.favorites.filter(
+                item => item._id !== action.payload
+            );
+    },
+        loadMore(state) {
+            state.page = state.page += 1;
+        },
+        refreshCampers(state) {
+            state.page = 1;
+            state.campers = [];
+        },
+    },
     extraReducers: (builder) => {
         builder
-        .addCase(getCampersThunk.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.error = null;
-            state.campers = action.payload;
-        })
-        .addCase(getCampersThunk.pending, (state, action) => {
-            state.isLoading = true;
-            state.error = null;
-        })
-        .addCase(getCampersThunk.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.payload;
-        })
-    }
+            .addCase(getCampersThunk.fulfilled, (state, { payload }) => {
+                if (state.page === 1) {
+                    state.cars = payload;
+                } else {
+                    state.cars.push(...payload);
+                }
+            });
+    },
     
 })
 
-
-export const camperReducer = camperSlice.reducer
+export const { addCamper, removeCamper, loadMore, refreshCampers } = camperSlice.actions
+export const campersReducer = camperSlice.reducer

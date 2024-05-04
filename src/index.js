@@ -11,7 +11,7 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}></Provider>
+    <Provider store={store}>
      <PersistGate persistor={persistor} loading={null}>
     <BrowserRouter basename="/Camper-Rental">
       <App /><ToastContainer
@@ -27,6 +27,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             theme="light"
           />
       </BrowserRouter>
-       </PersistGate>
+       </PersistGate></Provider>
   </React.StrictMode>
 );

@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { camperReducer } from "./camperSlice.js";
-
+import { campersReducer } from "./camperSlice.js";
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -16,12 +15,11 @@ import {
 const campersConfig = {
   key: 'campers',
   storage,
+  whitelist: ['favorites'],
 };
 
  export const store = configureStore({
-  reducer: {
-   campers: persistReducer( campersConfig,camperReducer),
-  },
+  reducer: persistReducer( campersConfig,campersReducer),
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({
     serializableCheck: {

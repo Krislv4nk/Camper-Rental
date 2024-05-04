@@ -1,46 +1,45 @@
-import React from "react";
-// import { selectCampers } from "../../redux/camperSlice.selectors";
-// import {  useSelector } from "react-redux";
+
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getCampersThunk } from "../../redux/operations";
+import { selectCampers, selectPage } from "../../redux/selectors";
+import { refreshCampers, loadMore } from "../../redux/camperSlice";
+import { Camper } from "components/Camper/Camper";
 
 
-export const CatalogList = ({ _id }) => {
-//     const campers = useSelector(selectCampers);
-// console.log(campers);
+
+
+
+export const CatalogList = () => {
+
+    const dispatch = useDispatch();
+    const campers = useSelector(selectCampers);
+    const page = useSelector(selectPage);
+    const totalCampers = 13;
+    const totalPages = Math.ceil(totalCampers / 4);
+
+    const handleLoadMore = () => {
+        dispatch(loadMore());
+    }
+
+    useEffect(() => {
+        dispatch(getCampersThunk(page));
+        console.log(page);
+    }, [dispatch, page]);
+    
+    useEffect(() => {
+        return () => {
+            dispatch(refreshCampers());
+        }
+    }, [dispatch]);
     return (
         <div>
             <ul>
-                {/* {campers &&campers.map(({ _id, name, price, rating,
-                    location, adults, children, engine,
-                    transmission, form, length, width, height,
-                    tank, consumption, description, details,
-                    gallery, reviews, error, isLoading, favorites }) => (
-                    <li key={_id}>
-                        <img src="" alt="" />
-                        <h3>{name}</h3>
-                        <p>{price}</p>
-                        <p>{rating}</p>
-                        <p>{location}</p>
-                        <p>{adults}</p>
-                        <p>{children}</p>
-                        <p>{engine}</p>
-                        <p>{transmission}</p>
-                        <p>{form}</p>
-                        <p>{length}</p>
-                        <p>{width}</p>
-                        <p>{height}</p>
-                        <p>{tank}</p>
-                        <p>{consumption}</p>
-                        <p>{description}</p>
-                        <p>{details}</p>
-                        <p>{gallery}</p>
-                        <p>{reviews}</p>
-                        <p>{error}</p>
-                        <p>{isLoading}</p>
-                        <p>{favorites}</p>
-                    </li> */}
-
-                   {/* ))} */}
+                {campers.map((camper) => (
+                    <Camper key={camper.name} camper={camper} />
+                ))}
             </ul>
+            {page < totalPages && <button onClick={handleLoadMore}>Load More</button>}
         </div>
-    )
-}
+    );
+};
