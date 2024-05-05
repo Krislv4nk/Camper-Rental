@@ -1,45 +1,44 @@
 
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { getCampersThunk } from "../../redux/operations";
-import { selectCampers, selectPage } from "../../redux/selectors";
-import { refreshCampers, loadMore } from "../../redux/camperSlice";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { getCampersThunk } from '../../redux/operations';
+import { addFavorite, addFavorites } from "../../redux/camperSlice";
+import { selectFavoriteCampers, selectCampers } from '../../redux/selectors';
 import { Camper } from "components/Camper/Camper";
 
-
-
-
-
 export const CatalogList = () => {
-
     const dispatch = useDispatch();
-    const campers = useSelector(selectCampers);
-    const page = useSelector(selectPage);
-    const totalCampers = 13;
-    const totalPages = Math.ceil(totalCampers / 4);
-
-    const handleLoadMore = () => {
-        dispatch(loadMore());
-    }
+    const allAds = useSelector(selectCampers);
+    console.log(allAds);
+    const favorites = useSelector(selectFavoriteCampers);
+    console.log(favorites);
+    const adsPerPage = 4;
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        dispatch(getCampersThunk(page));
-        console.log(page);
-    }, [dispatch, page]);
-    
-    useEffect(() => {
-        return () => {
-            dispatch(refreshCampers());
-        }
+        dispatch(getCampersThunk());
     }, [dispatch]);
+
+    const handleLoadMoreClick = () => {
+        setPage(page + 1);
+    };
+
+    const handleFavoriteClick = () => {
+        dispatch(addFavorite());
+    };
+
+    const adsToShow = allAds.slice(0, page * adsPerPage);
+
     return (
         <div>
-            <ul>
-                {campers.map((camper) => (
-                    <Camper key={camper.name} camper={camper} />
-                ))}
-            </ul>
-            {page < totalPages && <button onClick={handleLoadMore}>Load More</button>}
+
+                {adsToShow.map(camper => (
+                    <Camper key={camper.id} camper={camper}  onFavoriteClick={handleFavoriteClick} />
+            ))}
+            {adsToShow.length < allAds.length && (
+                <button onClick={handleLoadMoreClick}>Load more</button>
+            )}
+        
         </div>
     );
 };

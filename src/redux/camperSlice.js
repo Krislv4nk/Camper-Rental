@@ -3,9 +3,12 @@ import { getCampersThunk } from "./operations";
 
 
 const initialState = {
-    cars: [],
-    favorites: [],
-    page: 1,
+    campers: {
+    adverts: [],
+        isLoading: false,
+    error: null,
+    },
+favorites: [],
 };
 
 
@@ -13,34 +16,38 @@ export const camperSlice = createSlice({
     name: 'campers',
     initialState,
     reducers: {
-        addCamper(state, action) {
+       addFavorite(state, action) {
             state.favorites.push(action.payload);
-        },
-        removeCamper(state, action) {
-            state.favorites = state.favorites.filter(
-                item => item._id !== action.payload
-            );
-    },
-        loadMore(state) {
-            state.page = state.page += 1;
-        },
-        refreshCampers(state) {
-            state.page = 1;
-            state.campers = [];
-        },
-    },
+      },
+      
+      removeFavorite(state, action) {
+        state.favorites = state.favorites.filter(
+          (favorite) => favorite._id !== action.payload
+        );
+      },
+      
+      refreshFavorites(state, action) {
+        state.favorites = action.payload;
+      },
+  },
+    
     extraReducers: (builder) => {
         builder
-            .addCase(getCampersThunk.fulfilled, (state, { payload }) => {
-                if (state.page === 1) {
-                    state.cars = payload;
-                } else {
-                    state.cars.push(...payload);
-                }
-            });
-    },
+          .addCase(getCampersThunk.pending, (state) => {
+            state.campers.isLoading = true;
+          })
+          .addCase(getCampersThunk.fulfilled, (state, action) => {
+            state.campers.isLoading = false;
+            state.campers.adverts = action.payload;
+            state.error = null;
+          })
+          .addCase(getCampersThunk.rejected, (state, action) => {
+            state.campers.isLoading = false;
+            state.campers.error = action.payload;
+          });
+      },
+    });
     
-})
-
-export const { addCamper, removeCamper, loadMore, refreshCampers } = camperSlice.actions
-export const campersReducer = camperSlice.reducer
+        export const { addFavorite, removeFavorite, refreshFavorites } = camperSlice.actions;
+        
+        export const campersReducer = camperSlice.reducer;
