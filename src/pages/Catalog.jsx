@@ -1,19 +1,14 @@
 import React from "react";
-// import { useDispatch } from 'react-redux';
-// import { getCampersThunk } from '../redux/camperSlice.operations';
-// import { selectCampers } from '../redux/camperSlice.selectors';
-// import { Loader } from "components/Loader/Loader";
-// import { errorToast, successToast } from "helpers/services";
-import  {CatalogList}  from "components/CatalogList/CatalogList";
+import { Filter } from "components/Filter/Filter";
+import { CatalogList } from "components/CatalogList/CatalogList";
+import css from "./Catalog.module.css"
 
 
 const Catalog = () => {
 
-
     return (
-        <div>
-            
-            
+        <div className={css.wrapper}>
+            <Filter/>
             <CatalogList/>
         </div>
     )

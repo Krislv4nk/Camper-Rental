@@ -1,8 +1,31 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .header {
    background-color: silver;
     padding: 20px 64px;
     margin: 0;
     max-width: 1440px;
+    display: flex;
+justify-content: space-between;
+}
+
+.logoWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.name {
+color: var(--primary-color-text);
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    transition: 0.5s;
 }
 .headerList {
     display: flex;
@@ -10,7 +33,7 @@
     margin: 0 auto;
     padding: 10px;
     gap: 30px;
-   justify-content: space-between;
+    justify-content: space-between;
 }
 
 .headerItem {

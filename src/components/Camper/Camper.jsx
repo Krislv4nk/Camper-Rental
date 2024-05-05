@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/camperSlice";
-import { selectCampers, selectFavoriteCampers } from "../../redux/selectors";
-import { getCampersThunk } from "../../redux/operations";
-
+import { selectFavoriteCampers } from "../../redux/selectors";
 
 export const Camper = ({ camper }) => {
     const { _id, gallery,
@@ -17,17 +15,9 @@ export const Camper = ({ camper }) => {
         engine,
         transmission,
         adults, } = camper;
-
-    // const campers = useSelector(selectCampers);
     const favorites = useSelector(selectFavoriteCampers);
     const dispatch = useDispatch();
-
     const isFavorite = favorites.some(favorite => favorite._id === camper._id);
-useEffect(() => {
-        dispatch(getCampersThunk());
-    }, [dispatch]);
-
-    
     const handleFavoriteClick = () => {
         if (isFavorite) {
             dispatch(removeFavorite(_id));
@@ -35,9 +25,8 @@ useEffect(() => {
             dispatch(addFavorite(_id));
         }
     };
-    
     return (
-        <li>
+        <li key={camper._id}>
             <img src={gallery[0]} alt="camper" />
             <p>{name}</p>
             <p>{price}</p>
