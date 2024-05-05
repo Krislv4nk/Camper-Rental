@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import { icons } from '../../assets';
+import camper from 'assets/camper.png'
 import css from './Header.module.css';
 
 
@@ -8,11 +8,10 @@ export const Header = () => {
     return (
       <header className={css.header}>
         <div className={css.logoWrapper}>
-          <svg width="40" height="40"><use href={`${icons}#icon-camper`}></use></svg>
+          <img className={css.camper} src={camper} alt="camper" />
           <p className={css.name}>CamperClub</p>
         </div>
                 <nav className={css.wrapper}>
-                    <div >
                     <ul className={css.headerList}>
                         <li ><NavLink className={({ isActive }) =>
             `${css.headerItem} ${isActive ? css.active : ''}`
@@ -27,7 +26,6 @@ export const Header = () => {
           
           
                         </ul>
-                        </div>
                 </nav>
             </header>
     )
