@@ -25,10 +25,6 @@ background-repeat: no-repeat;
   font-weight: 600;
 }
 
-.heroWrapper {
-    
-    
-}
 @keyframes blink {
         0% {
             color: var(--primary-color-black);

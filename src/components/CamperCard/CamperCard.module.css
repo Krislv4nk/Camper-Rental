@@ -1,0 +1,111 @@
+.item {
+    border: 1px solid rgba(16, 24, 40, 0.2);
+border-radius: 20px;
+padding: 24px;
+width: 888px;
+height: 358px;
+background-color: #fff;
+display: flex;
+gap: 24px;
+margin-bottom: 32px;
+}
+
+.foto {
+    border-radius: 10px;
+width: 290px;
+height: 310px;
+}
+.detailsWrapper {
+    width: 526px;
+height: 310px;
+}
+.nameWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.name {
+font-weight: 600;
+font-size: 24px;
+line-height: 1.25;
+color: var(--primary-color-black);
+}
+.priceWrapper{
+    display: flex;
+    gap: 10px;
+flex-direction: row;
+align-items: center;
+margin-bottom: 8px;
+}
+.svg {
+    fill: transparent;
+    stroke: black;
+}
+
+.ratingWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.locationWrapper {
+    display: flex;
+   align-items: center;
+}
+.ratingWrap {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.description {
+   overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--primary-color-text);
+white-space: nowrap;
+width: 525px;
+  margin-bottom: 24px;
+  
+}
+.hidden-text {
+   background: var(--primary-color-white);
+        color: var(--primary-color-black);
+       height: 100%;
+        padding: 40px 32px;
+       transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.listItem {
+    border-radius: 100px;
+padding: 12px 18px;
+width: auto;
+height: 44px;
+background: var(--primary-color-input);
+mix-blend-mode: multiply;
+display: flex;
+    align-items: center;
+}
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 526px;
+height: 96px;
+margin-bottom: 24px;
+gap: 8px;
+}
+.button {
+    border-radius: 200px;
+padding: 16px 40px;
+width: 166px;
+height: 56px; 
+background-color: var(--primary-color-red);
+}
+.button:hover,
+.button:focus {
+    background-color: var(--secondary-color-red);
+}

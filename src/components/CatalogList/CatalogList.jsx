@@ -1,29 +1,43 @@
 
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useSelector } from 'react-redux';
 import { getCampersThunk } from '../../redux/operations';
-import { selectCampers } from '../../redux/selectors';
-import { Camper } from "components/Camper/Camper";
+import { useDispatch } from "react-redux";
+import { selectCampers, selectPage} from '../../redux/selectors';
+import { Camper } from "components/CamperCard/CamperCard";
+import { incrementPage } from '../../redux/camperSlice';
 
 export const CatalogList = () => {
-    const dispatch = useDispatch();
-    const allAds = useSelector(selectCampers);
-    console.log(allAds);
+ 
+        const dispatch = useDispatch();
+  const allAds = useSelector(selectCampers);
+  const currentPage = useSelector(selectPage);
+console.log(currentPage)
     const adsPerPage = 4;
-    const [page, setPage] = useState(1);
-    const handleLoadMoreClick = () => {
-        setPage(page + 1);
-    };
-    const adsToShow = allAds.slice(0, page * adsPerPage);
-    useEffect(() => {
-        dispatch(getCampersThunk());
-    }, [dispatch]);
+
+    const incrementPageAndFetch = () => (dispatch, getState) => {
+  dispatch(incrementPage());
+  const page = getState().campers.page;
+  dispatch(getCampersThunk(page));
+};
+
+ useEffect(() => {
+    dispatch(getCampersThunk(currentPage)); 
+  }, [dispatch, currentPage]);
+    
+   const handleLoadMoreClick = () => {
+    dispatch(incrementPageAndFetch());
+  };
+
+  const startIndex = (currentPage - 1) * adsPerPage;
+  const endIndex = startIndex + adsPerPage;
+  const adsToShow = allAds.slice(startIndex, endIndex);
+
     return (
-        <div>
+        <div> 
                 {adsToShow.map(camper => (
                     <Camper key={camper._id} camper={camper}  />
                 ))}
-            
             
             {adsToShow.length < allAds.length && (
                 <button onClick={handleLoadMoreClick}>Load more</button>

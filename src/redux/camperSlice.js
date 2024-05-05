@@ -3,19 +3,24 @@ import { getCampersThunk } from "./operations";
 
 
 const initialState = {
-    campers: {
+  campers: {
+      favorites: [],
     adverts: [],
-        isLoading: false,
+    page: 1,
+  filter: '',
+  },
+  isLoading: false,
     error: null,
-    },
-favorites: [],
 };
 
 
 export const camperSlice = createSlice({
     name: 'campers',
     initialState,
-    reducers: {
+  reducers: {
+      incrementPage: state => {
+      state.campers.page += 1;
+    },
        addFavorite(state, action) {
             state.favorites.push(action.payload);
       },
@@ -48,6 +53,6 @@ export const camperSlice = createSlice({
       },
     });
     
-        export const { addFavorite, removeFavorite, refreshFavorites } = camperSlice.actions;
+        export const { addFavorite, removeFavorite, refreshFavorites,  incrementPage } = camperSlice.actions;
         
         export const campersReducer = camperSlice.reducer;
