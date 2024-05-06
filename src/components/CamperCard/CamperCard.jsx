@@ -54,7 +54,7 @@ const handleResetFavoriteClick = ({ _id }) => {
                 <div className={css.nameWrapper}>
                     <p className={css.name}>{name}</p>
                     <div className={css.priceWrapper}>
-            <p className={css.name}>€{price}</p>
+            <p className={css.name}>€{price}.00</p>
     
                 {isFavorite
                             ? <button onClick={handleSetFavoriteClick}>
@@ -104,8 +104,10 @@ const handleResetFavoriteClick = ({ _id }) => {
             </ul>
                 <button className={css.button} onClick={handleOpenClick}>Show more</button>
                 <StyledEngineProvider injectFirst>
-                    <Dialog open={openModal} onClose={handleCloseClick} PaperComponent={() =>
-                        <Modal camper={camper} onClose={handleCloseClick} />}></Dialog>
+                    <Dialog open={openModal} onClose={handleCloseClick}
+                        PaperComponent={() =>
+                            <Modal onClose={handleCloseClick} camper={camper} 
+                            />}></Dialog>
                 </StyledEngineProvider>
             </div>
             
