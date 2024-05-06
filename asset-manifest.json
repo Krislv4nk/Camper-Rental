@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/Camper-Rental/static/css/main.e30d3197.css",
-    "main.js": "/Camper-Rental/static/js/main.9e7b3e87.js",
+    "main.css": "/Camper-Rental/static/css/main.c6ad38e6.css",
+    "main.js": "/Camper-Rental/static/js/main.28c99456.js",
     "static/media/lake.jpg": "/Camper-Rental/static/media/lake.f53bd130017e0c1c9c48.jpg",
     "static/media/camper.png": "/Camper-Rental/static/media/camper.7739867547c24f50c23b.png",
+    "static/media/Switch.jpg": "/Camper-Rental/static/media/Switch.7a3bc85b238436d7bdc1.jpg",
+    "static/media/Switch1.jpg": "/Camper-Rental/static/media/Switch1.b9d0ad0d693deb8a41a8.jpg",
+    "static/media/Tooltip.jpg": "/Camper-Rental/static/media/Tooltip.cfbd483dba33807d5c65.jpg",
     "static/media/sprite.svg": "/Camper-Rental/static/media/sprite.e2c0ad366245920fb9281694d09adf74.svg",
     "index.html": "/Camper-Rental/index.html",
-    "main.e30d3197.css.map": "/Camper-Rental/static/css/main.e30d3197.css.map",
-    "main.9e7b3e87.js.map": "/Camper-Rental/static/js/main.9e7b3e87.js.map"
+    "main.c6ad38e6.css.map": "/Camper-Rental/static/css/main.c6ad38e6.css.map",
+    "main.28c99456.js.map": "/Camper-Rental/static/js/main.28c99456.js.map"
   },
   "entrypoints": [
-    "static/css/main.e30d3197.css",
-    "static/js/main.9e7b3e87.js"
+    "static/css/main.c6ad38e6.css",
+    "static/js/main.28c99456.js"
   ]
 }
